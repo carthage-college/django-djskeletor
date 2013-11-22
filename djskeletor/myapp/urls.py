@@ -4,8 +4,8 @@ from django.contrib import admin
 #django discovery
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    (r'^alumni/directory/display/(?P<student_id>\d+)/$','djaludir.alumni.views.display'),
-    (r'^alumni/directory/search/$','djaludir.alumni.views.search'),
-    (r'^alumni/admin/(.*)', admin.site.root),
+urlpatterns = patterns('myapp.views',
+    url(r'^myapp/display/(?P<pid>\d+)/$','display', name="myapp_display"),
+    url(r'^myapp/search/$','search', name="myapp_search"),
+    url(r'^myapp/admin/(.*)', admin.site.root),
 )

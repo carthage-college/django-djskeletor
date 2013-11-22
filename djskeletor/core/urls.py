@@ -5,10 +5,13 @@ from django.contrib import admin
 
 admin.autodiscover()
 
+handler404 = 'djtools.views.errors.four_oh_four_error'
+handler500 = 'djtools.views.errors.server_error'
+
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     # my app
-    url(r'^myapp/', include(myapp.urls)),
+    url(r'^myapp/', include("myapp.urls")),
     # redirect
     url(r'^$', RedirectView.as_view(url="/foobar/")),
 )
