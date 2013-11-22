@@ -38,9 +38,12 @@ def main():
 if __name__ == "__main__":
     (options, args) = parser.parse_args()
     equis = options.equis
-    if not equis:
-        print "Lorem ipsum dolor sit amet.\n"
-        parser.print_help()
-        exit(-1)
+
+    mandatories = ['equis',]
+    for m in mandatories:
+        if not options.__dict__[m]:
+            print "mandatory option is missing\n"
+            parser.print_help()
+            exit(-1)
 
     sys.exit(main())
