@@ -29,9 +29,9 @@ FILE_CHARSET = 'utf-8'
 SERVER_URL = ""
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ROOT_DIR = os.path.dirname(__file__)
-ROOT_URL = "/djproj/"
-ROOT_URLCONF = 'djproj.urls'
-WSGI_APPLICATION = 'djproj.wsgi.application'
+ROOT_URL = "/djskeletor/"
+ROOT_URLCONF = 'djskeletor.urls'
+WSGI_APPLICATION = 'djskeletor.wsgi.application'
 MEDIA_ROOT = ''
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATIC_ROOT = ''
@@ -47,7 +47,7 @@ DATABASES = {
     'default': {
         'HOST': '127.0.0.1',
         'PORT': '3306',
-        'NAME': 'djproj',
+        'NAME': 'djskeletor',
         'ENGINE': 'django.db.backends.mysql',
         'USER': '',
         'PASSWORD': ''
@@ -64,9 +64,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'djproj',
-    'djproj.core',
-    'djproj.myapp',
+    'djskeletor',
+    'djskeletor.core',
+    'djskeletor.myapp',
     'djtools',
 )
 
@@ -85,7 +85,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 TEMPLATE_DIRS = (
-    "/data2/django_projects/djproj/templates/",
+    "/data2/django_projects/djskeletor/templates/",
     "/data2/django_templates/djdfir/",
     "/data2/django_templates/djcher/",
     "/data2/django_templates/",
@@ -128,8 +128,8 @@ AUTHENTICATION_BACKENDS = (
     'djauth.ldapBackend.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
-LOGIN_URL = '/djproj/accounts/login/'
-LOGIN_REDIRECT_URL = '/djproj/'
+LOGIN_URL = '/djskeletor/accounts/login/'
+LOGIN_REDIRECT_URL = '/djskeletor/'
 USE_X_FORWARDED_HOST = True
 #SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
