@@ -30,7 +30,7 @@ SERVER_URL = ""
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ROOT_DIR = os.path.dirname(__file__)
 ROOT_URL = "/djskeletor/"
-ROOT_URLCONF = 'djskeletor.urls'
+ROOT_URLCONF = 'djskeletor.core.urls'
 WSGI_APPLICATION = 'djskeletor.wsgi.application'
 MEDIA_ROOT = ''
 ADMIN_MEDIA_PREFIX = '/static/admin/'
@@ -97,7 +97,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.debug",
     "django.core.context_processors.media",
 )
-
 # caching
 CACHES = {
     'default': {
@@ -105,16 +104,15 @@ CACHES = {
         #'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         #'LOCATION': '127.0.0.1:11211',
         #'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        #'LOCATION': '/var/tmp/django_directory_cache',
+        #'LOCATION': '/var/tmp/django_djskeletor_cache',
         #'TIMEOUT': 60*20,
-        #'KEY_PREFIX': "DIRECTORY_",
+        #'KEY_PREFIX': "DJSKELETOR_",
         #'OPTIONS': {
         #    'MAX_ENTRIES': 80000,
         #}
     }
 }
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
-
 # LDAP Constants
 LDAP_SERVER = ''
 LDAP_PORT = '636'
@@ -123,6 +121,10 @@ LDAP_BASE = ""
 LDAP_USER = ""
 LDAP_PASS = ""
 LDAP_EMAIL_DOMAIN = ""
+LDAP_GROUPS = {"":"",}
+LDAP_OBJECT_CLASS = ""
+LDAP_OBJECT_CLASS_LIST = ["",""]
+LDAP_RETURN = []
 # auth backends
 AUTHENTICATION_BACKENDS = (
     'djauth.ldapBackend.LDAPBackend',
@@ -134,7 +136,7 @@ USE_X_FORWARDED_HOST = True
 #SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_DOMAIN=".carthage.edu"
-SESSION_COOKIE_NAME ='django_carthage_cookie'
+SESSION_COOKIE_NAME ='django_djskeletor_cookie'
 SESSION_COOKIE_AGE = 86400
 
 # logging

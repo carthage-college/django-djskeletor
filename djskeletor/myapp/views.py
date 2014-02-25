@@ -20,9 +20,16 @@ def myview(request):
             if data.email:
                 email = data.email
             subject = "[Submit] %s %s" % (data.first_name,data.last_name)
-            send_mail(request,TO_LIST, subject, email,"myapp/email.html", data, BCC)
+            send_mail(
+                request,TO_LIST, subject, email,"myapp/email.html", data, BCC
+            )
             return HttpResponseRedirect('/myapp/success/')
     else:
         form = MyForm()
     return render_to_response("myapp/form.html",
         {"form": form,}, context_instance=RequestContext(request))
+
+def search(request):
+    return render_to_response("myapp/search.html",
+        context_instance=RequestContext(request))
+

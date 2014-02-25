@@ -5,7 +5,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('myapp.views',
-    url(r'^myapp/display/(?P<pid>\d+)/$','display', name="myapp_display"),
-    url(r'^myapp/search/$','search', name="myapp_search"),
-    url(r'^myapp/admin/(.*)', admin.site.root),
+    url(r'^myview/(?P<pid>\d+)/$','myview', name="myapp_display"),
+    url(r'^search/$','search', name="myapp_search"),
 )
