@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, loader, Context
 
+from djsandbox.myapp.forms import MyForm
 from djtools.utils.mail import send_mail
 
 if settings.DEBUG:
@@ -11,7 +12,7 @@ else:
     TO_LIST = ["someone@carthage.edu",]
 BCC = settings.MANAGERS
 
-def myview(request):
+def myview(request,pid):
     if request.method=='POST':
         form = MyForm(request.POST, request.FILES)
         if form.is_valid():
