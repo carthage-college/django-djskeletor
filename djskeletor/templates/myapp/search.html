@@ -3,7 +3,7 @@
 {% block title %}Search &mdash; Carthage College{% endblock %}
 {% block columns %}<link href="http://www.carthage.edu/media/css/douglasfir/3_column.css" rel="stylesheet" type="text/css" />{% endblock %}
 {% block left_nav %}
-    {% include "admissions/left_nav.html" %}
+    {% include "myapp/left_nav.html" %}
 {% endblock %}
 {% block content %}
 {% get_api_object as header cms snippet 342 code %}
@@ -15,6 +15,6 @@
 </div>
 {% endblock %}
 {% block sidebar %}
-    {% include "admissions/side_bar.html" %}
+    {% include "myapp/side_bar.html" %}
 {% endblock %}
 
