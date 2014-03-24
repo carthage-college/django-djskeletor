@@ -24,3 +24,8 @@ WSGIDaemonProcess djskeletor user=www-data group=www-data processes=1 threads=5
 WSGIImportScript /d2/django_projects/djskeletor/wsgi process-group=djskeletor application-group=djskeletor
 WSGIScriptAlias /djskeletor "/d2/django_projects/djskeletor/wsgi.py"
 ```
+
+##Pro Tips
+
+1. Take advantage of reuseable apps in the djtools project
+2. Use the templates in the djskins project
