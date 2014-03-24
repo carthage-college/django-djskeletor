@@ -11,6 +11,8 @@ Skeleton project for Django development
 4. add the wsgi parameters to apache2 configuration file
 5. restart apache2
 
+_Note:_ replace djskeletor with the name of _your_ project e.g. djmyproj
+
 ##Sample wsgi configuration for apache2
 
 ```
