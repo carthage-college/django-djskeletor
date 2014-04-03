@@ -86,9 +86,9 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 TEMPLATE_DIRS = (
-    "/data2/django_projects/djskeletor/templates/",
     "/data2/django_templates/djdfir/",
     "/data2/django_templates/djcher/",
+    "/data2/django_projects/djskeletor/templates/",
     "/data2/django_templates/",
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -139,7 +139,16 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_DOMAIN=".carthage.edu"
 SESSION_COOKIE_NAME ='django_djskeletor_cookie'
 SESSION_COOKIE_AGE = 86400
-
+# SMTP settings
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_FAIL_SILENTLY = False
+DEFAULT_FROM_EMAIL = ''
+SERVER_EMAIL = ''
+SERVER_MAIL=''
 # logging
 LOG_FILEPATH = os.path.join(os.path.dirname(__file__), "logs/")
 LOG_FILENAME = LOG_FILEPATH + "debug.log"
@@ -183,12 +192,7 @@ LOGGING = {
         }
     },
     'loggers': {
-        'mugshots.upload': {
-            'handlers':['logfile'],
-            'propagate': True,
-            'level':'DEBUG',
-        },
-        'core': {
+        'djskeletor': {
             'handlers':['logfile'],
             'propagate': True,
             'level':'DEBUG',

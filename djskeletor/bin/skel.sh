@@ -24,7 +24,11 @@ Accepts as input...
 """
 
 parser = OptionParser(description=desc)
-parser.add_option("-x", "--equis", help="Lorem ipsum dolor sit amet.", dest="equis")
+parser.add_option(
+    "-x", "--equis",
+    help="Lorem ipsum dolor sit amet.",
+    dest="equis"
+)
 
 def main():
     """
@@ -42,7 +46,7 @@ if __name__ == "__main__":
     mandatories = ['equis',]
     for m in mandatories:
         if not options.__dict__[m]:
-            print "mandatory option is missing\n"
+            print "mandatory option is missing: %s\n" % m
             parser.print_help()
             exit(-1)
 

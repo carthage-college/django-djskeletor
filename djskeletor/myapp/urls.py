@@ -5,6 +5,12 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('djskeletor.myapp.views',
-    url(r'^myview/(?P<pid>\d+)/$','myview', name="myapp_display"),
-    url(r'^search/$','search', name="myapp_search"),
+    url(
+        r'^myview/(?P<pid>\d+)/$',
+        'myview', name="myapp_display"
+    ),
+    url(
+        r'^search/$',
+        'search', name="myapp_search"
+    ),
 )

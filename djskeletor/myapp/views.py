@@ -7,9 +7,9 @@ from djsandbox.myapp.forms import MyForm
 from djtools.utils.mail import send_mail
 
 if settings.DEBUG:
-    TO_LIST = ["larry@carthage.edu",]
+    TO_LIST = [settings.SERVER_EMAIL,]
 else:
-    TO_LIST = ["someone@carthage.edu",]
+    TO_LIST = [settings.MY_APP_EMAIL,]
 BCC = settings.MANAGERS
 
 def myview(request,pid):
@@ -27,10 +27,15 @@ def myview(request,pid):
             return HttpResponseRedirect('/myapp/success/')
     else:
         form = MyForm()
-    return render_to_response("myapp/form.html",
-        {"form": form,}, context_instance=RequestContext(request))
+    return render_to_response(
+        "myapp/form.html",
+        {"form": form,},
+        context_instance=RequestContext(request)
+    )
 
 def search(request):
-    return render_to_response("myapp/search.html",
-        context_instance=RequestContext(request))
+    return render_to_response(
+        "myapp/search.html",
+        context_instance=RequestContext(request)
+    )
 
