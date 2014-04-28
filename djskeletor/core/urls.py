@@ -16,15 +16,15 @@ urlpatterns = patterns('',
     url(
         r'^myapp/', include("djskeletor.myapp.urls")
     ),
-    # redirect
-    url(
-        r'^$', RedirectView.as_view(url="/foobar/")
-    ),
     # direct to template
     url(
         r'^success/$',
         TemplateView.as_view(
             template_name="myapp/success.html"
         )
+    ),
+    # redirect
+    url(
+        r'^$', RedirectView.as_view(url="/foobar/")
     ),
 )

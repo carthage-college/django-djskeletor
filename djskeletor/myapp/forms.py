@@ -2,7 +2,7 @@
 
 from django import forms
 
-from djsandbox.myapp.models import MyModel
+from djskeletor.myapp.models import MyModel
 
 class MyForm(forms.ModelForm):
 
