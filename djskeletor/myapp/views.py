@@ -7,13 +7,13 @@ from django.shortcuts import render_to_response, get_object_or_404
 from djskeletor.myapp.forms import MyForm
 from djtools.utils.mail import send_mail
 
-if settings.DEBUG:
-    TO_LIST = [settings.SERVER_EMAIL,]
-else:
-    TO_LIST = [settings.MY_APP_EMAIL,]
-BCC = settings.MANAGERS
-
 def myview(request,pid):
+    if settings.DEBUG:
+        TO_LIST = [settings.SERVER_EMAIL,]
+    else:
+        TO_LIST = [settings.MY_APP_EMAIL,]
+    BCC = settings.MANAGERS
+
     if request.method=='POST':
         form = MyForm(request.POST, request.FILES)
         if form.is_valid():
