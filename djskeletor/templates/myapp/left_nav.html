@@ -1,5 +1,4 @@
-{% load get_api %}
-<div id="first">
-    {% get_api_object as menu menutree menu 117 code %}
-    {{menu}}
-</div>
+{% load livewhale_api %}
+<h4>MyApp</h4>
+{% get_lw_content as nav blurbs 1984 %}
+{{nav.body}}

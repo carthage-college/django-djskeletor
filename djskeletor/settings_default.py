@@ -25,9 +25,9 @@ USE_L10N = False
 USE_TZ = False
 DEFAULT_CHARSET = 'utf-8'
 FILE_CHARSET = 'utf-8'
-
 SERVER_URL = ""
 API_URL = "%s/%s" % (SERVER_URL, "api")
+LIVEWHALE_API_URL = "https://%s" % (SERVER_URL)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ROOT_DIR = os.path.dirname(__file__)
 ROOT_URL = "/djskeletor/"
@@ -48,7 +48,7 @@ DATABASES = {
     'default': {
         'HOST': '127.0.0.1',
         'PORT': '3306',
-        'NAME': 'djskeletor',
+        'NAME': 'django_djskeletor',
         'ENGINE': 'django.db.backends.mysql',
         'USER': '',
         'PASSWORD': ''
