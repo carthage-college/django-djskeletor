@@ -21,7 +21,7 @@ def myview(request,pid):
             email = settings.DEFAULT_FROM_EMAIL
             if data.email:
                 email = data.email
-            subject = "[Submit] %s %s" % (data.first_name,data.last_name)
+            subject = "[Submit] {} {}".format(data.first_name,data.last_name)
             send_mail(
                 request,TO_LIST, subject, email,"myapp/email.html", data, BCC
             )
