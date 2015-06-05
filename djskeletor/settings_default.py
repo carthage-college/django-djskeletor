@@ -9,6 +9,7 @@ import os
 #DEBUG = False
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+INFORMIX_DEBUG = "debug"
 ADMINS = (
     ('', ''),
 )
@@ -50,6 +51,7 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'django_djskeletor',
         'ENGINE': 'django.db.backends.mysql',
+        #'ENGINE': 'django.db.backends.dummy',
         'USER': '',
         'PASSWORD': ''
     },
@@ -72,12 +74,17 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # the following should be uncommented unless you are
+    # embedding your apps in iframes
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 # template stuff
@@ -86,9 +93,9 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 TEMPLATE_DIRS = (
-    "/data2/django_templates/djdfir/",
-    "/data2/django_templates/djcher/",
     "/data2/django_projects/djskeletor/templates/",
+    "/data2/django_templates/djkorra/",
+    "/data2/django_templates/djcher/",
     "/data2/django_templates/",
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -116,16 +123,22 @@ CACHES = {
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 # LDAP Constants
 LDAP_SERVER = ''
-LDAP_PORT = '636'
-LDAP_PROTOCOL = "ldaps"
+LDAP_SERVER_PWM = ''
+LDAP_PORT = ''
+LDAP_PORT_PWM = ''
+LDAP_PROTOCOL = ""
+LDAP_PROTOCOL_PWM = ""
 LDAP_BASE = ""
 LDAP_USER = ""
 LDAP_PASS = ""
 LDAP_EMAIL_DOMAIN = ""
-LDAP_GROUPS = {"":"",}
 LDAP_OBJECT_CLASS = ""
-LDAP_OBJECT_CLASS_LIST = ["",""]
+LDAP_OBJECT_CLASS_LIST = []
+LDAP_GROUPS = {}
 LDAP_RETURN = []
+LDAP_RETURN_PWM = []
+LDAP_ID_ATTR = ""
+LDAP_CHALLENGE_ATTR = ""
 # auth backends
 AUTHENTICATION_BACKENDS = (
     'djauth.ldapBackend.LDAPBackend',
