@@ -12,7 +12,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djskeleton.settings")
 
 from django.conf import settings
 
-from optparse import OptionParser
+import argparse
 
 """
 Shell script...
@@ -23,16 +23,24 @@ desc = """
 Accepts as input...
 """
 
-parser = OptionParser(description=desc)
-parser.add_option(
+parser = argparse.ArgumentParser(description=desc)
+
+parser.add_argument(
     "-x", "--equis",
+    required=True,
     help="Lorem ipsum dolor sit amet.",
     dest="equis"
+)
+parser.add_argument(
+    "--test",
+    action='store_true',
+    help="Dry run?",
+    dest="test"
 )
 
 def main():
     """
-    main method
+    main function
     """
 
 ######################
@@ -40,14 +48,11 @@ def main():
 ######################
 
 if __name__ == "__main__":
-    (options, args) = parser.parse_args()
-    equis = options.equis
+    args = parser.parse_args()
+    equis = args.equis
+    test = args.test
 
-    mandatories = ['equis',]
-    for m in mandatories:
-        if not options.__dict__[m]:
-            print "mandatory option is missing: %s\n" % m
-            parser.print_help()
-            exit(-1)
+    print args
 
     sys.exit(main())
+
