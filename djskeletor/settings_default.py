@@ -70,6 +70,7 @@ INSTALLED_APPS = (
     'djskeletor',
     'djskeletor.core',
     'djskeletor.myapp',
+    # needed for template tags
     'djtools',
 )
 
@@ -93,7 +94,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 TEMPLATE_DIRS = (
-    "/data2/django_projects/djskeletor/templates/",
+    os.path.join(os.path.dirname(__file__), 'templates'),
     "/data2/django_templates/djkorra/",
     "/data2/django_templates/djcher/",
     "/data2/django_templates/",
