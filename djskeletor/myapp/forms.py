@@ -8,4 +8,5 @@ class MyForm(forms.ModelForm):
 
     class Meta:
         model = MyModel
+        fields = '__all__'
 
