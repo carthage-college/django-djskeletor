@@ -7,7 +7,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from djskeletor.myapp.forms import MyForm
 from djtools.utils.mail import send_mail
 
-def myview(request,pid):
+def myview(request, pid=None):
     if settings.DEBUG:
         TO_LIST = [settings.SERVER_EMAIL,]
     else:
