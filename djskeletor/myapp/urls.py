@@ -11,6 +11,10 @@ urlpatterns = patterns('djskeletor.myapp.views',
         'myview', name="myapp_display"
     ),
     url(
+        r'^myview/$',
+        'myview', name="myapp_display_no_pid"
+    ),
+    url(
         r'^search/$',
         'search', name="myapp_search"
     ),
