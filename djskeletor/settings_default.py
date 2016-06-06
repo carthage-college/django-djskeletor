@@ -27,8 +27,8 @@ USE_TZ = False
 DEFAULT_CHARSET = 'utf-8'
 FILE_CHARSET = 'utf-8'
 SERVER_URL = ""
-API_URL = "%s/%s" % (SERVER_URL, "api")
-LIVEWHALE_API_URL = "https://%s" % (SERVER_URL)
+API_URL = "{}/{}".format(SERVER_URL, "api")
+LIVEWHALE_API_URL = "https://{}".format(SERVER_URL)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ROOT_DIR = os.path.dirname(__file__)
 ROOT_URL = "/djskeletor/"
@@ -61,7 +61,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.formtools',
     'django.contrib.humanize',
     'django.contrib.messages',
     'django.contrib.sessions',
@@ -79,7 +78,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

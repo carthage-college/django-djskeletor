@@ -8,19 +8,23 @@ Model: ...
 """
 
 class MyModel(models.Model):
-    created_by          = models.ForeignKey(
-        User,verbose_name="Created by",
-        related_name="created_by",editable=False,null=True,blank=True
+    created_by = models.ForeignKey(
+        User,
+        verbose_name="Created by",
+        related_name="mymodel_created_by",
+        editable=False, null=True, blank=True
     )
-    updated_by          = models.ForeignKey(
-        User,verbose_name="Updated by",
-        related_name="updated_by",editable=False,null=True,blank=True
+    updated_by = models.ForeignKey(
+        User,
+        verbose_name="Updated by",
+        related_name="mymodel_updated_by",
+        editable=False, null=True, blank=True
     )
-    created_at          = models.DateTimeField(
-        "Date Created",auto_now_add=True
+    created_at = models.DateTimeField(
+        "Date Created", auto_now_add=True
     )
-    updated_at          = models.DateTimeField(
-        "Date Updated",auto_now=True
+    updated_at = models.DateTimeField(
+        "Date Updated", auto_now=True
     )
 
     class Meta:
