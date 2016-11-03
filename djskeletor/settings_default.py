@@ -31,13 +31,16 @@ API_URL = "{}/{}".format(SERVER_URL, "api")
 LIVEWHALE_API_URL = "https://{}".format(SERVER_URL)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ROOT_DIR = os.path.dirname(__file__)
+ADMIN_MEDIA_PREFIX = '/static/admin/'
+STATIC_URL = "/static/djskeletor/"
 ROOT_URL = "/djskeletor/"
+MEDIA_ROOT = '{}/assets/'.format(ROOT_DIR)
+STATIC_ROOT = '{}/static/'.format(ROOT_DIR)
+MEDIA_URL = '{}assets/'.format(STATIC_URL)
+UPLOADS_DIR = "{}files/".format(MEDIA_ROOT)
+UPLOADS_URL = "{}files/".format(MEDIA_URL)
 ROOT_URLCONF = 'djskeletor.core.urls'
 WSGI_APPLICATION = 'djskeletor.wsgi.application'
-MEDIA_ROOT = ''
-ADMIN_MEDIA_PREFIX = '/static/admin/'
-STATIC_ROOT = ''
-STATIC_URL = "/static/"
 STATICFILES_DIRS = ()
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -87,23 +90,32 @@ MIDDLEWARE_CLASSES = (
 )
 
 # template stuff
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
-TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), 'templates'),
-    "/data2/django_templates/djkorra/",
-    "/data2/django_templates/djcher/",
-    "/data2/django_templates/",
-)
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "djtools.context_processors.sitevars",
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.request",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.media",
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            "/data2/django_projects/djskeletor/templates/",
+            "/data2/django_templates/djkorra/",
+            "/data2/django_templates/djcher/",
+            "/data2/django_templates/django-djskins/",
+            "/data2/livewhale/includes/",
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                "djtools.context_processors.sitevars",
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            #'loaders': [
+            #    # insert your TEMPLATE_LOADERS here
+            #]
+        },
+    },
+]
 # caching
 CACHES = {
     'default': {
@@ -143,8 +155,9 @@ AUTHENTICATION_BACKENDS = (
     'djauth.ldapBackend.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
-LOGIN_URL = '/djskeletor/accounts/login/'
-LOGIN_REDIRECT_URL = '/djskeletor/'
+LOGIN_URL = '{}accounts/login/'.format(ROOT_URL)
+LOGOUT_URL = '{}accounts/logout/'.format(ROOT_URL)
+LOGIN_REDIRECT_URL = ROOT_URL
 USE_X_FORWARDED_HOST = True
 #SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
