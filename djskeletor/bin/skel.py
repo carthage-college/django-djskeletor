@@ -10,6 +10,10 @@ sys.path.append('/data2/django_projects/')
 sys.path.append('/data2/django_third/')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djskeleton.settings")
 
+# required if using django models
+#import django
+#django.setup()
+
 from django.conf import settings
 
 import argparse
