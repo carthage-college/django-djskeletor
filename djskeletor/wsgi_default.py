@@ -37,6 +37,7 @@ os.environ['LD_RUN_PATH'] = os.environ['LD_LIBRARY_PATH']
 from django.core.wsgi import get_wsgi_application
 
 # NOTE: remove the try/except in production
+#application = get_wsgi_application()
 try:
     application = get_wsgi_application()
 except Exception:
