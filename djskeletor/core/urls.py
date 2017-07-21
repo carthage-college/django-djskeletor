@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.views.generic import RedirectView, TemplateView
 
 from django.contrib import admin
@@ -8,7 +8,7 @@ admin.autodiscover()
 handler404 = 'djtools.views.errors.four_oh_four_error'
 handler500 = 'djtools.views.errors.server_error'
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(
         r'^admin/', include(admin.site.urls)
     ),
@@ -27,4 +27,4 @@ urlpatterns = patterns('',
     url(
         r'^$', RedirectView.as_view(url="/foobar/")
     ),
-)
+]
