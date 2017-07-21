@@ -3,11 +3,11 @@ from django.conf import settings
 from django.db import models, connection
 from django.contrib.auth.models import User
 
-"""
-Model: ...
-"""
 
 class MyModel(models.Model):
+    """
+    Model: ...
+    """
     created_by = models.ForeignKey(
         User,
         verbose_name="Created by",

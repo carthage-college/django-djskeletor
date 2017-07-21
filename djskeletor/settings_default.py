@@ -102,6 +102,7 @@ TEMPLATES = [
         ],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug':DEBUG,
             'context_processors': [
                 "djtools.context_processors.sitevars",
                 'django.contrib.auth.context_processors.auth',
@@ -199,10 +200,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'null': {
-            'level':'DEBUG',
-            'class':'django.utils.log.NullHandler',
-        },
         'logfile': {
             'level':'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
