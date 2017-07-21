@@ -1,19 +1,20 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.views.generic import TemplateView
 
+from djskeletor.myapp import views
 
-urlpatterns = patterns('djskeletor.myapp.views',
+urlpatterns = [
     url(
         r'^myview/(?P<pid>\d+)/$',
-        'myview', name="myapp_display"
+        views.myview, name='myapp_display'
     ),
     url(
         r'^myview/$',
-        'myview', name="myapp_display_no_pid"
+        views.myview, name='myapp_display_no_pid'
     ),
     url(
         r'^search/$',
-        'search', name="myapp_search"
+        views.search, name='myapp_search'
     ),
     url(
         r'^myview/success/$',
