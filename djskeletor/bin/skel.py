@@ -27,31 +27,36 @@ desc = """
 Accepts as input...
 """
 
-parser = argparse.ArgumentParser(description=desc)
+# RawTextHelpFormatter method allows for new lines in help text
+parser = argparse.ArgumentParser(
+    description=desc, formatter_class=argparse.RawTextHelpFormatter
+)
 
 parser.add_argument(
     "-x", "--equis",
     required=True,
     help="Lorem ipsum dolor sit amet.",
-    dest="equis"
+    dest='equis'
 )
 parser.add_argument(
     "--test",
     action='store_true',
     help="Dry run?",
-    dest="test"
+    dest='test'
 )
 
 def main():
     """
     main function
     """
+    print 'boo!'
+
 
 ######################
 # shell command line
 ######################
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     args = parser.parse_args()
     equis = args.equis
     test = args.test
