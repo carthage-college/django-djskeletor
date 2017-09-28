@@ -1,26 +1,28 @@
 # -*- coding: utf-8 -*-
 import os, sys
-
 # env
 sys.path.append('/usr/lib/python2.7/dist-packages/')
 sys.path.append('/usr/lib/python2.7/')
 sys.path.append('/usr/local/lib/python2.7/dist-packages/')
-sys.path.append('/data2/django_current/')
+sys.path.append('/data2/django_1.11/')
 sys.path.append('/data2/django_projects/')
 sys.path.append('/data2/django_third/')
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djskeleton.settings")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djskeletor.settings')
 
 # required if using django models
-#import django
-#django.setup()
+import django
+django.setup()
 
 from django.conf import settings
 
 import argparse
+import logging
 
-"""
+logger = logging.getLogger('djskeletor')
+
+'''
 Shell script...
-"""
+'''
 
 # set up command-line options
 desc = """
@@ -33,23 +35,28 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument(
-    "-x", "--equis",
+    '-x', '--equis',
     required=True,
     help="Lorem ipsum dolor sit amet.",
     dest='equis'
 )
 parser.add_argument(
-    "--test",
+    '--test',
     action='store_true',
     help="Dry run?",
     dest='test'
 )
 
 def main():
-    """
+    '''
     main function
-    """
-    print 'boo!'
+    '''
+
+    if test:
+        print 'this is a test'
+        logger.debug("debug = {}".format(test))
+    else:
+        print 'this is not a test'
 
 
 ######################
