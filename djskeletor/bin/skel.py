@@ -68,7 +68,8 @@ if __name__ == '__main__':
     equis = args.equis
     test = args.test
 
-    print args
+    if test:
+        print args
 
     sys.exit(main())
 
