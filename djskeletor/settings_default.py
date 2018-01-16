@@ -8,7 +8,7 @@ import os
 # Debug
 #DEBUG = False
 DEBUG = True
-INFORMIX_DEBUG = "debug"
+INFORMIX_DEBUG = 'debug'
 ADMINS = (
     ('', ''),
 )
@@ -25,19 +25,19 @@ USE_L10N = False
 USE_TZ = False
 DEFAULT_CHARSET = 'utf-8'
 FILE_CHARSET = 'utf-8'
-SERVER_URL = ""
-API_URL = "{}/{}".format(SERVER_URL, "api")
-LIVEWHALE_API_URL = "https://{}".format(SERVER_URL)
+SERVER_URL = ''
+API_URL = '{}/{}'.format(SERVER_URL, 'api')
+LIVEWHALE_API_URL = 'https://{}'.format(SERVER_URL)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ROOT_DIR = os.path.dirname(__file__)
 ADMIN_MEDIA_PREFIX = '/static/admin/'
-STATIC_URL = "/static/djskeletor/"
-ROOT_URL = "/djskeletor/"
+STATIC_URL = '/static/djskeletor/'
+ROOT_URL = '/djskeletor/'
 MEDIA_ROOT = '{}/assets/'.format(ROOT_DIR)
 STATIC_ROOT = '{}/static/'.format(ROOT_DIR)
 MEDIA_URL = '{}assets/'.format(STATIC_URL)
-UPLOADS_DIR = "{}files/".format(MEDIA_ROOT)
-UPLOADS_URL = "{}files/".format(MEDIA_URL)
+UPLOADS_DIR = '{}files/'.format(MEDIA_ROOT)
+UPLOADS_URL = '{}files/'.format(MEDIA_URL)
 ROOT_URLCONF = 'djskeletor.core.urls'
 WSGI_APPLICATION = 'djskeletor.wsgi.application'
 STATICFILES_DIRS = ()
@@ -94,16 +94,16 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(os.path.dirname(__file__), 'templates'),
-            "/data2/django_templates/djkorra/",
-            "/data2/django_templates/djcher/",
-            "/data2/django_templates/django-djskins/",
-            "/data2/livewhale/includes/",
+            '/data2/django_templates/djkorra/',
+            '/data2/django_templates/djcher/',
+            '/data2/django_templates/django-djskins/',
+            '/data2/livewhale/includes/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
             'debug':DEBUG,
             'context_processors': [
-                "djtools.context_processors.sitevars",
+                'djtools.context_processors.sitevars',
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.media',
@@ -125,7 +125,7 @@ CACHES = {
         #'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         #'LOCATION': '/var/tmp/django_djskeletor_cache',
         #'TIMEOUT': 60*20,
-        #'KEY_PREFIX': "DJSKELETOR_",
+        #'KEY_PREFIX': 'DJSKELETOR_',
         #'OPTIONS': {
         #    'MAX_ENTRIES': 80000,
         #}
@@ -137,19 +137,19 @@ LDAP_SERVER = ''
 LDAP_SERVER_PWM = ''
 LDAP_PORT = ''
 LDAP_PORT_PWM = ''
-LDAP_PROTOCOL = ""
-LDAP_PROTOCOL_PWM = ""
-LDAP_BASE = ""
-LDAP_USER = ""
-LDAP_PASS = ""
-LDAP_EMAIL_DOMAIN = ""
-LDAP_OBJECT_CLASS = ""
+LDAP_PROTOCOL = ''
+LDAP_PROTOCOL_PWM = ''
+LDAP_BASE = ''
+LDAP_USER = ''
+LDAP_PASS = ''
+LDAP_EMAIL_DOMAIN = ''
+LDAP_OBJECT_CLASS = ''
 LDAP_OBJECT_CLASS_LIST = []
 LDAP_GROUPS = {}
 LDAP_RETURN = []
 LDAP_RETURN_PWM = []
-LDAP_ID_ATTR = ""
-LDAP_CHALLENGE_ATTR = ""
+LDAP_ID_ATTR = ''
+LDAP_CHALLENGE_ATTR = ''
 # auth backends
 AUTHENTICATION_BACKENDS = (
     'djauth.ldapBackend.LDAPBackend',
@@ -159,9 +159,9 @@ LOGIN_URL = '{}accounts/login/'.format(ROOT_URL)
 LOGOUT_URL = '{}accounts/logout/'.format(ROOT_URL)
 LOGIN_REDIRECT_URL = ROOT_URL
 USE_X_FORWARDED_HOST = True
-#SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+#SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
-SESSION_COOKIE_DOMAIN=".carthage.edu"
+SESSION_COOKIE_DOMAIN='.carthage.edu'
 SESSION_COOKIE_NAME ='django_djskeletor_cookie'
 SESSION_COOKIE_AGE = 86400
 # SMTP settings
@@ -175,19 +175,19 @@ DEFAULT_FROM_EMAIL = ''
 SERVER_EMAIL = ''
 SERVER_MAIL=''
 # logging
-LOG_FILEPATH = os.path.join(os.path.dirname(__file__), "logs/")
-LOG_FILENAME = LOG_FILEPATH + "debug.log"
+LOG_FILEPATH = os.path.join(os.path.dirname(__file__), 'logs/')
+LOG_FILENAME = LOG_FILEPATH + 'debug.log'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
     'formatters': {
         'standard': {
-            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt' : "%Y/%b/%d %H:%M:%S"
+            'format' : '[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s',
+            'datefmt' : '%Y/%b/%d %H:%M:%S'
         },
         'verbose': {
             'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s',
-            'datefmt' : "%Y/%b/%d %H:%M:%S"
+            'datefmt' : '%Y/%b/%d %H:%M:%S'
         },
         'simple': {
             'format': '%(levelname)s %(message)s'
