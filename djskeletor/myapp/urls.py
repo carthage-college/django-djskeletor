@@ -5,7 +5,8 @@ from djskeletor.myapp import views
 
 urlpatterns = [
     url(
-        r'^myview/(?P<pid>\d+)/$',
+        #r'^myview/(?P<username>[-\w]+)/display/$',
+        r'^myview/(?P<pid>\d+)/display/$',
         views.myview, name='myapp_display'
     ),
     url(
