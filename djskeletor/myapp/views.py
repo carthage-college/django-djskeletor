@@ -1,11 +1,11 @@
 from django.conf import settings
-from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, get_object_or_404
 
 from djskeletor.myapp.forms import MyForm
 from djtools.utils.mail import send_mail
+
 
 def myview(request, pid=None):
     if settings.DEBUG:
