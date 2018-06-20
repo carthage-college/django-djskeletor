@@ -18,11 +18,17 @@ SECRET_KEY = ''
 ALLOWED_HOSTS = []
 
 LANGUAGE_CODE = 'en-us'
+#TIME_ZONE = 'UTC'
 TIME_ZONE = 'America/Chicago'
 SITE_ID = 1
 USE_I18N = False
 USE_L10N = False
 USE_TZ = False
+# defaults from django-admin
+#USE_I18N = True
+#USE_L10N = True
+#USE_TZ = True
+#
 DEFAULT_CHARSET = 'utf-8'
 FILE_CHARSET = 'utf-8'
 SERVER_URL = ''
@@ -59,7 +65,7 @@ DATABASES = {
     },
 }
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,9 +79,10 @@ INSTALLED_APPS = (
     'djskeletor.myapp',
     # needed for template tags
     'djtools',
-)
+]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
@@ -86,14 +93,14 @@ MIDDLEWARE_CLASSES = (
     # the following should be uncommented unless you are
     # embedding your apps in iframes
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+]
 
 # template stuff
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(os.path.dirname(__file__), 'templates'),
+            os.path.join(BASE_DIR, 'templates'),
             '/data2/django_templates/djkorra/',
             '/data2/django_templates/djcher/',
             '/data2/django_templates/django-djskins/',
@@ -108,6 +115,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
+                'django.template.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
             ],
             #'loaders': [
@@ -155,6 +163,21 @@ AUTHENTICATION_BACKENDS = (
     'djauth.ldapBackend.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 LOGIN_URL = '{}accounts/login/'.format(ROOT_URL)
 LOGOUT_URL = '{}accounts/logout/'.format(ROOT_URL)
 LOGIN_REDIRECT_URL = ROOT_URL

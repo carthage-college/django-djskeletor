@@ -1,4 +1,6 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import os, sys
 # env
 sys.path.append('/usr/lib/python2.7/dist-packages/')
@@ -53,10 +55,10 @@ def main():
     '''
 
     if test:
-        print 'this is a test'
+        print("this is a test")
         logger.debug("debug = {}".format(test))
     else:
-        print 'this is not a test'
+        print("this is not a test")
 
 
 ######################
@@ -69,7 +71,7 @@ if __name__ == '__main__':
     test = args.test
 
     if test:
-        print args
+        print(args)
 
     sys.exit(main())
 
