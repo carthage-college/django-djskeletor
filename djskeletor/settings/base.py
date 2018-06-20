@@ -5,9 +5,13 @@ Django settings for project.
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from djzbar.settings import INFORMIX_EARL_TEST as INFORMIX_EARL
+from djzbar.settings import JX_EARL_PROD
+from djzbar.settings import JX_EARL_TEST
+from djzbar.settings import INFORMIX_ODBC
+
 # Debug
-#DEBUG = False
-DEBUG = True
+DEBUG = False
 INFORMIX_DEBUG = 'debug'
 ADMINS = (
     ('', ''),
@@ -18,23 +22,17 @@ SECRET_KEY = ''
 ALLOWED_HOSTS = []
 
 LANGUAGE_CODE = 'en-us'
-#TIME_ZONE = 'UTC'
 TIME_ZONE = 'America/Chicago'
 SITE_ID = 1
 USE_I18N = False
 USE_L10N = False
 USE_TZ = False
-# defaults from django-admin
-#USE_I18N = True
-#USE_L10N = True
-#USE_TZ = True
-#
 DEFAULT_CHARSET = 'utf-8'
 FILE_CHARSET = 'utf-8'
 SERVER_URL = ''
 API_URL = '{}/{}'.format(SERVER_URL, 'api')
 LIVEWHALE_API_URL = 'https://{}'.format(SERVER_URL)
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = os.path.dirname(__file__)
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATIC_URL = '/static/djskeletor/'
@@ -52,19 +50,16 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-
 DATABASES = {
     'default': {
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'NAME': 'django_djskeletor',
         'ENGINE': 'django.db.backends.mysql',
-        #'ENGINE': 'django.db.backends.dummy',
         'USER': '',
         'PASSWORD': ''
     },
 }
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -74,13 +69,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'djskeletor',
     'djskeletor.core',
     'djskeletor.myapp',
     # needed for template tags
     'djtools',
 ]
-
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
@@ -94,7 +87,6 @@ MIDDLEWARE_CLASSES = [
     # embedding your apps in iframes
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 # template stuff
 TEMPLATES = [
     {
@@ -102,6 +94,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             '/data2/django_templates/djkorra/',
+            '/data2/django_templates/djbootmin/',
             '/data2/django_templates/djcher/',
             '/data2/django_templates/django-djskins/',
             '/data2/livewhale/includes/',
@@ -158,12 +151,12 @@ LDAP_RETURN = []
 LDAP_RETURN_PWM = []
 LDAP_ID_ATTR = ''
 LDAP_CHALLENGE_ATTR = ''
+LDAP_AUTH_USER_PK = False
 # auth backends
 AUTHENTICATION_BACKENDS = (
     'djauth.ldapBackend.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -198,11 +191,11 @@ DEFAULT_FROM_EMAIL = ''
 SERVER_EMAIL = ''
 SERVER_MAIL=''
 # logging
-LOG_FILEPATH = os.path.join(os.path.dirname(__file__), 'logs/')
+LOG_FILEPATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'logs/')
 LOG_FILENAME = LOG_FILEPATH + 'debug.log'
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
     'formatters': {
         'standard': {
             'format' : '[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s',
@@ -243,7 +236,17 @@ LOGGING = {
         }
     },
     'loggers': {
+        '': {
+            'handlers':['logfile'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
         'djskeletor': {
+            'handlers':['logfile'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+        'djskeletor.core': {
             'handlers':['logfile'],
             'propagate': True,
             'level':'DEBUG',
