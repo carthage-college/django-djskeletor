@@ -17,6 +17,10 @@ urlpatterns = [
     url(
         r'^myapp/', include('djskeletor.myapp.urls')
     ),
+    # dashboard
+    url(
+        r'^dashboard/', include('djskeletor.dashboard.urls')
+    )
     # direct to template
     url(
         r'^success/$',
