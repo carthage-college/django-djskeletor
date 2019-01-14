@@ -211,7 +211,7 @@ LOGGING = {
         'custom': {
             'format': '%(asctime)s: %(levelname)s: %(message)s',
             'datefmt' : '%m/%d/%Y %I:%M:%S %p'
-        }
+        },
         'simple': {
             'format': '%(levelname)s %(message)s'
         },
@@ -230,7 +230,7 @@ LOGGING = {
             'filters': ['require_debug_true'], # do not run error logger in production
             'class': 'logging.FileHandler',
             'filename': CUSTOM_LOG_FILENAME,
-            'formatter': 'standard',
+            'formatter': 'custom',
         },
         'info_logfile': {
             'level':'INFO',
@@ -239,7 +239,7 @@ LOGGING = {
             'maxBytes': 50000,
             'filters': ['require_debug_false'], # run logger in production
             'filename': INFO_LOG_FILENAME,
-            'formatter': 'standard',
+            'formatter': 'simple',
         },
         'debug_logfile': {
             'level': 'DEBUG',
