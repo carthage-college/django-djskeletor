@@ -56,6 +56,7 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'django_djskeletor',
         'ENGINE': 'django.db.backends.mysql',
+        #'ENGINE': 'django.db.backends.dummy',
         'USER': '',
         'PASSWORD': ''
     },
