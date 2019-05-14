@@ -20,7 +20,7 @@ urlpatterns = [
     # dashboard
     url(
         r'^dashboard/', include('djskeletor.dashboard.urls')
-    )
+    ),
     # direct to template
     url(
         r'^success/$',
