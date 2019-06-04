@@ -12,13 +12,15 @@ class MyModel(models.Model):
         User,
         verbose_name="Created by",
         related_name="mymodel_created_by",
-        editable=False, null=True, blank=True
+        editable=False, null=True, blank=True,
+        on_delete=models.SET_NULL
     )
     updated_by = models.ForeignKey(
         User,
         verbose_name="Updated by",
         related_name="mymodel_updated_by",
-        editable=False, null=True, blank=True
+        editable=False, null=True, blank=True,
+        on_delete=models.SET_NULL
     )
     created_at = models.DateTimeField(
         "Date Created", auto_now_add=True
@@ -37,6 +39,5 @@ class MyModel(models.Model):
         """
         return self.created_by.username
 
-    @models.permalink
     def get_absolute_url(self):
         return ('myapp_detail', [str(self.id)])
