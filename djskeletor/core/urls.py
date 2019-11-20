@@ -1,7 +1,10 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.views.generic import RedirectView, TemplateView
-
+from django.contrib.auth import views as auth_views
+from django.urls import reverse_lazy
 from django.contrib import admin
+
+from djauth.views import loggedout
 
 admin.autodiscover()
 
@@ -10,26 +13,52 @@ handler500 = 'djtools.views.errors.server_error'
 
 
 urlpatterns = [
-    url(
-        r'^admin/', include(admin.site.urls)
+    # auth
+    path(
+        'accounts/login/', auth_views.LoginView.as_view(),
+        {'template_name': 'accounts/login.html'},
+        name='auth_login'
+    ),
+    path(
+        'accounts/logout/', auth_views.LoginView.as_view(),
+        {'next_page': reverse_lazy('auth_loggedout')},
+        name='auth_logout'
+    ),
+    path(
+        'accounts/loggedout/', loggedout,
+        {'template_name': 'accounts/logged_out.html'},
+        name='auth_loggedout'
+    ),
+    path(
+        'accounts/',
+        RedirectView.as_view(url=reverse_lazy('auth_login'))
+    ),
+    path(
+        'denied/',
+        TemplateView.as_view(template_name='denied.html'), name='access_denied'
+    ),
+    # django admin
+    path(
+        'admin/', admin.site.urls
     ),
     # my app
-    url(
-        r'^myapp/', include('djskeletor.myapp.urls')
+    path(
+        'myapp/', include('djsapo.myapp.urls')
     ),
     # dashboard
-    url(
-        r'^dashboard/', include('djskeletor.dashboard.urls')
+    path(
+        'dashboard/', include('djsapo.dashboard.urls')
     ),
     # direct to template
-    url(
-        r'^success/$',
+    path(
+        'success/',
         TemplateView.as_view(
             template_name='myapp/success.html'
         )
     ),
     # redirect
-    url(
-        r'^$', RedirectView.as_view(url='/foobar/')
+    path(
+        '', RedirectView.as_view(url=reverse_lazy('dashboard_home'))
     ),
 ]
+urlpatterns += path('admin/', include('loginas.urls')),
