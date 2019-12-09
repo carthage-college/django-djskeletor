@@ -269,10 +269,6 @@ LOGGING = {
         }
     },
     'loggers': {
-        'provisioning_logger': {
-            'handlers': ['error_logfile'],
-            'level': 'ERROR'
-         },
         'error_logger': {
             'handlers': ['error_logfile'],
             'level': 'ERROR'

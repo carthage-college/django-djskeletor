@@ -2,7 +2,7 @@
 
 import os, sys
 # env
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djskeletor.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djskeletor.settings.shell')
 
 # required if using django models
 import django
@@ -13,7 +13,7 @@ from django.conf import settings
 import argparse
 import logging
 
-logger = logging.getLogger('djskeletor')
+logger = logging.getLogger('debug_logger')
 
 '''
 Shell script...

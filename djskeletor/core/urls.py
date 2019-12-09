@@ -43,11 +43,11 @@ urlpatterns = [
     ),
     # my app
     path(
-        'myapp/', include('djsapo.myapp.urls')
+        'myapp/', include('djskeletor.myapp.urls')
     ),
     # dashboard
     path(
-        'dashboard/', include('djsapo.dashboard.urls')
+        'dashboard/', include('djskeletor.dashboard.urls')
     ),
     # direct to template
     path(
