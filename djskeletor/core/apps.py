@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
+"""Data models."""
 
 from django.apps import AppConfig
 
 
 class CoreConfig(AppConfig):
+    """Application configuration for this module."""
+
     name = 'core'

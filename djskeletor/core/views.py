@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
+"""URLs for all views."""
+
+from django.conf import settings
 from django.shortcuts import render
 
-# Create your views here.
+
+def home(request):
+    """Application home."""
+    return render(
+        request, 'index.html', {'foobar': settings.FOO_BAR},
+    )
