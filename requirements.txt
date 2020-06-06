@@ -1,4 +1,4 @@
-django==2.2.11
+django==2.2.13
 django-admin-honeypot==1.1.0
 django-bootstrap4==1.1.1
 django-informixdb==1.9.0
