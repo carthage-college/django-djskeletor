@@ -9,7 +9,6 @@ from django.urls import path
 from django.urls import reverse_lazy
 from django.views.generic import RedirectView
 from django.views.generic import TemplateView
-
 from djauth.views import loggedout
 
 
@@ -24,19 +23,19 @@ urlpatterns = [
     path(
         'accounts/login/',
         auth_views.LoginView.as_view(),
-        {'template_name': 'accounts/login.html'},
+        {'template_name': 'registration/login.html'},
         name='auth_login',
     ),
     path(
         'accounts/logout/',
-        auth_views.LoginView.as_view(),
+        auth_views.LogoutView.as_view(),
         {'next_page': reverse_lazy('auth_loggedout')},
         name='auth_logout',
     ),
     path(
         'accounts/loggedout/',
         loggedout,
-        {'template_name': 'accounts/logged_out.html'},
+        {'template_name': 'registration/logged_out.html'},
         name='auth_loggedout',
     ),
     path(
