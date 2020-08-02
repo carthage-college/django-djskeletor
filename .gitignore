@@ -53,10 +53,12 @@ coverage.xml
 # Django stuff:
 *.log
 shell.py
+demo.py
 local.py
 development.py
 staging.py
 production.py
+wsgi_demo.py
 wsgi.py
 migrations
 
