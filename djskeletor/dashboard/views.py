@@ -11,3 +11,10 @@ def home(request):
     return render(
         request, 'dashboard/home.html', {'foobar': settings.FOO_BAR},
     )
+
+
+def search(request):
+    """Dashboard search."""
+    return render(
+        request, 'dashboard/search.html', {}
+    )
