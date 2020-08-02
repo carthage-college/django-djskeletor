@@ -13,7 +13,7 @@ from django.conf import settings
 import argparse
 import logging
 
-logger = logging.getLogger('debug_logger')
+logger = logging.getLogger('debug_logfile')
 
 '''
 Shell script...
@@ -42,21 +42,15 @@ parser.add_argument(
     dest='test'
 )
 
-def main():
-    '''
-    main function
-    '''
 
+def main():
+    """Main function description."""
     if test:
         print("this is a test")
         logger.debug("debug = {}".format(test))
     else:
         print("this is not a test")
 
-
-######################
-# shell command line
-######################
 
 if __name__ == '__main__':
     args = parser.parse_args()
