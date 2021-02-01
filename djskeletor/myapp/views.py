@@ -8,7 +8,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from djtools.utils.mail import send_mail
 
-from djthia.gearup.forms import GraduateForm
+from djskeltor.myapp.forms import MyForm
 
 
 def home(request, pid=None):
@@ -19,7 +19,7 @@ def home(request, pid=None):
         to_list = [settings.MY_APP_EMAIL]
 
     if request.method == 'POST':
-        form = GraduateForm(request.POST, request.FILES)
+        form = MyForm(request.POST, request.FILES)
         if form.is_valid():
             grad = form.save()
             email = settings.DEFAULT_FROM_EMAIL
@@ -31,7 +31,7 @@ def home(request, pid=None):
             )
             return HttpResponseRedirect(reverse_lazy('myapp_success'))
     else:
-        form = GraduateForm()
+        form = MyForm()
     return render(request, 'myapp/form.html', {'form': form})
 
 

@@ -1,6 +1,9 @@
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import os, sys
+import os
+import sys
+
 # env
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djskeletor.settings.shell')
 
@@ -14,10 +17,6 @@ import argparse
 import logging
 
 logger = logging.getLogger('debug_logfile')
-
-'''
-Shell script...
-'''
 
 # set up command-line options
 desc = """
@@ -47,7 +46,7 @@ def main():
     """Main function description."""
     if test:
         print("this is a test")
-        logger.debug("debug = {}".format(test))
+        logger.debug("debug = %s" % test)
     else:
         print("this is not a test")
 
