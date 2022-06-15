@@ -8,18 +8,14 @@ import sys
 # env
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djskeletor.settings.shell')
 
-from django.conf import settings
-
-
-# set up command-line options
 
 def main():
-    """Main function that does something. """
+    """Main function that does something."""
     try:
         print("hello world")
-    except Exception as e:
+    except Exception as error:
         print("does not exist")
-        print("Exception: {0}".format(str(e)))
+        print("Exception: {0}".format(str(error)))
         sys.exit(1)
 
 

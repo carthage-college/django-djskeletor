@@ -25,20 +25,21 @@ Accepts as input...
 
 # RawTextHelpFormatter method allows for new lines in help text
 parser = argparse.ArgumentParser(
-    description=desc, formatter_class=argparse.RawTextHelpFormatter
+    description=desc, formatter_class=argparse.RawTextHelpFormatter,
 )
 
 parser.add_argument(
-    '-x', '--equis',
+    '-x',
+    '--equis',
     required=True,
     help="Lorem ipsum dolor sit amet.",
-    dest='equis'
+    dest='equis',
 )
 parser.add_argument(
     '--test',
     action='store_true',
     help="Dry run?",
-    dest='test'
+    dest='test',
 )
 
 

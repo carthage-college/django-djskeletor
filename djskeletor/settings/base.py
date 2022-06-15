@@ -19,9 +19,9 @@ from djimix.settings.local import (
     LD_RUN_PATH,
 )
 
+
 # Debug
-DEBUG = True
-INFORMIX_DEBUG = 'debug'
+DEBUG = False
 REQUIRED_ATTRIBUTE = True
 ADMINS = ()
 MANAGERS = ADMINS
@@ -39,16 +39,17 @@ FILE_CHARSET = 'utf-8'
 SERVER_URL = ''
 API_URL = '{0}/{1}'.format(SERVER_URL, 'api')
 LIVEWHALE_API_URL = 'https://{0}'.format(SERVER_URL)
-ROOT_URL = '/apps/djskeletor/'
 ROOT_URLCONF = 'djskeletor.core.urls'
 WSGI_APPLICATION = 'djskeletor.wsgi.application'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = BASE_DIR
+PROJECT_APP = os.path.basename(BASE_DIR)
+ROOT_URL = '/{0}/'.format(PROJECT_APP)
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 MEDIA_ROOT = '{0}/assets/'.format(ROOT_DIR)
 STATIC_ROOT = '{0}/static/'.format(ROOT_DIR)
-STATIC_URL = '/static/djskeletor/'
-MEDIA_URL = '/media/djskeletor/'
+STATIC_URL = '/static/{0}/'.format(PROJECT_APP)
+MEDIA_URL = '/media/{0}/'.format(PROJECT_APP)
 UPLOADS_DIR = '{0}files/'.format(MEDIA_ROOT)
 UPLOADS_URL = '{0}files/'.format(MEDIA_URL)
 FILE_UPLOAD_PERMISSIONS=0o644
@@ -68,7 +69,6 @@ DATABASES = {
     },
 }
 INSTALLED_APPS = (
-    # 'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,7 +87,6 @@ INSTALLED_APPS = (
     # tagging package
     'taggit',
 )
-GRAPPELLI_ADMIN_TITLE = ''
 MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -121,6 +120,15 @@ TEMPLATES = [
         },
     },
 ]
+# caching
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+        'TIMEOUT': 604800,
+        'KEY_PREFIX': '{0}_'.format(PROJECT_APP),
+    }
+}
 # LDAP Constants
 LDAP_SERVER = ''
 LDAP_PORT = ''
@@ -267,3 +275,25 @@ LOGGING = {
         },
     },
 }
+
+##################
+# LOCAL SETTINGS #
+##################
+
+# Allow any settings to be defined in local.py which should be
+# ignored in your version control system allowing for settings to be
+# defined per machine.
+
+# Instead of doing "from .local import *", we use exec so that
+# local has full access to everything defined in this module.
+# Also force into sys.modules so it's visible to Django's autoreload.
+
+phile = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'local.py')
+if os.path.exists(phile):
+    import imp
+    import sys
+    module_name = '{0}.settings.local'.format(PROJECT_APP)
+    module = imp.new_module(module_name)
+    module.__file__ = phile
+    sys.modules[module_name] = module
+    exec(open(phile, 'rb').read())

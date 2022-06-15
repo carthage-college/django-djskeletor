@@ -58,7 +58,7 @@ local.py
 development.py
 staging.py
 production.py
-wsgi_demo.py
+wsgi_*.py
 wsgi.py
 migrations
 
