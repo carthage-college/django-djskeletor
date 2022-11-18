@@ -19,11 +19,10 @@ class GenericChoiceAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.ManyToManyField: {'widget': CheckboxSelectMultiple},
     }
-    ordering = ('-created_at',)
-    date_hierarchy = 'created_at'
-    readonly_fields = ('',)
-    search_fields = ('',)
-    raw_id_fields = ('',)
+    ordering = ('-name',)
+    #readonly_fields = ('',)
+    #search_fields = ('',)
+    #raw_id_fields = ('',)
 
     def summary_strip(self, instance):
         """Mark html content for summary field as safe."""
