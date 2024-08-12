@@ -1,4 +1,4 @@
-django==4.2.11
+django
 django-admin-honeypot
 django-localflavor
 django-loginas
